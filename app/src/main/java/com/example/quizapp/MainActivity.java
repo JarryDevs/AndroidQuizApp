@@ -3,20 +3,23 @@ package com.example.quizapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 //implemented View.OnClickListener can listen to all clicks of a button
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private Button trueButton;
     private Button falseButton;
     private TextView questionTV;
-    private Button nextButton;
-    private Button backButton;
+    private ImageButton nextButton;
+
+
+    int currentQuestionIndex = 0;
 
     private Question[] questionBank = new Question[]{
             new Question(R.string.question_open_source, false),
@@ -42,9 +45,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         trueButton = findViewById(R.id.true_button);
         falseButton = findViewById(R.id.false_button);
         questionTV = findViewById(R.id.answer_text_view);
+        nextButton = findViewById(R.id.next_button);
+
 
         falseButton.setOnClickListener(this); //'this' is registered to View.OnClickListener above on line 10
         trueButton.setOnClickListener(this);  // and it is registered to listen click events
+        nextButton.setOnClickListener(this);
+
 
     }
 
@@ -62,6 +69,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "False", Toast.LENGTH_LONG)
                         .show();
                 break;
+
+            case R.id.next_button:
+                currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length; //with this the count can´t go over the max amount of questions
+                Log.d("Current", "OnClick " + currentQuestionIndex);
+                questionTV.setText(questionBank[currentQuestionIndex].getAnswerResId());
+                break;
+
+
+
+
         }
     }
 }

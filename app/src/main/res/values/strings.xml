@@ -16,7 +16,7 @@
     <string name="question_languages">Corona, C#, PhoneGap, BASIC or C/C++ can not be used in Android development</string>
     <string name="question_gradle">Gradle is a JVM-based (Java Virtual Machine) build system</string>
     <string name="next_text">Next Question</string>
-    <string name="back_text">Back Question</string>
+    <string name="android_logo">android_logo</string>
 
 
 </resources>
