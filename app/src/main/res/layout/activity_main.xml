@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@android:color/background_dark"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
     <ImageView
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="107dp"
+        android:layout_height="123dp"
+        android:src="@drawable/android_robot" />
 
     <TextView
         android:id="@+id/answer_text_view"
        android:text="@string/question_open_source"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
+        android:textSize="23sp"
         android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -52,7 +52,7 @@
         <ImageButton
             android:contentDescription="@string/next_text"
             android:id="@+id/next_button"
-            android:src="@android:drawable/ic_media_next"
+           android:src="@drawable/arrow_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

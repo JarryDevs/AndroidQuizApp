@@ -18,8 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView questionTV;
     private ImageButton nextButton;
 
-
-    int currentQuestionIndex = 0;
+    int currentQuestionIndex = 0;   // because of scope we can use these MainActivity variables everywhere
 
     private Question[] questionBank = new Question[]{
             new Question(R.string.question_open_source, false),
@@ -61,25 +60,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
 
             case R.id.true_button:
-                Toast.makeText(MainActivity.this, "True", Toast.LENGTH_LONG)
-                        .show();
+              checkAnswer(true);
+               /* Toast.makeText(MainActivity.this, "True", Toast.LENGTH_LONG)
+                        .show();*/
                 break;
 
             case R.id.false_button:
-                Toast.makeText(MainActivity.this, "False", Toast.LENGTH_LONG)
-                        .show();
+                checkAnswer(false);
+               /* Toast.makeText(MainActivity.this, "False", Toast.LENGTH_LONG)
+                        .show();*/
                 break;
 
             case R.id.next_button:
                 currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length; //with this the count can´t go over the max amount of questions
-                Log.d("Current", "OnClick " + currentQuestionIndex);
-                questionTV.setText(questionBank[currentQuestionIndex].getAnswerResId());
-                break;
-
-
+                updateQuestion(); // Calling updateQuestion
 
 
         }
+    }
+
+    private void updateQuestion(){ //updateQuestion method
+        Log.d("Current", "OnClick " + currentQuestionIndex);
+        questionTV.setText(questionBank[currentQuestionIndex].getAnswerResId());
+    }
+
+    private void checkAnswer(boolean itsRightAnswer){
+        boolean answerTrue = questionBank[currentQuestionIndex].isAnswerTrue();
+           int toastMessage = 0;
+
+           if (itsRightAnswer == answerTrue){
+               toastMessage = R.string.right_answer;
+
+           }else{
+               toastMessage = R.string.wrong_answer;
+           }
+
+           Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_LONG )
+                   .show();
     }
 }
 
