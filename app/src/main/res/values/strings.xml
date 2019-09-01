@@ -4,19 +4,22 @@
     <string name="false_text">false</string>
     <string name="right_answer">That\'s the <b>right</b> answer</string>
     <string name="wrong_answer">That\'s the <b>wrong</b> answer</string>
-    <string name="question_open_source">Android is not an open source operating system</string>
-    <string name="question_linux">Android was originally created on top of Linux Kernel 2.6</string>
-    <string name="question_anr">ANR will occur when application is not responding</string>
-    <string name="question_logd">You can not use Log.d method to generate log messages</string>
-    <string name="question_on_click">onClick method handles button clicks</string>
-    <string name="question_xml">You can not modify an XML file</string>
-    <string name="question_version">Android version number 11 will be released in 2019</string>
-    <string name="question_founders">Android was founded by Rich Miner, Nick Sears, Chris White and Andy Rubin</string>
-    <string name="question_owner">Currently, Android is owned by Apple Inc.</string>
-    <string name="question_languages">Corona, C#, PhoneGap, BASIC or C/C++ can not be used in Android development</string>
-    <string name="question_gradle">Gradle is a JVM-based (Java Virtual Machine) build system</string>
-    <string name="next_text">Next Question</string>
+    <string name="question_open_source">1. Android is not an open source operating system</string>
+    <string name="question_linux">2. Android was originally created on top of Linux Kernel 2.6</string>
+    <string name="question_anr">3. ANR will occur when application is not responding</string>
+    <string name="question_logd">4. You can not use Log.d method to generate log messages</string>
+    <string name="question_on_click">5. onClick method handles button clicks</string>
+    <string name="question_xml">6. You can not modify an XML file</string>
+    <string name="question_version">7. Android version number 11 will be released in 2019</string>
+    <string name="question_founders">8. Android was founded by Rich Miner, Nick Sears, Chris White and Andy Rubin</string>
+    <string name="question_owner">9. Currently, Android is owned by Apple Inc.</string>
+    <string name="question_languages">10. Corona, C#, PhoneGap, BASIC or C/C++ can not be used in Android development</string>
+    <string name="question_gradle">11. Gradle is a JVM-based (Java Virtual Machine) build system</string>
+
+    <string name="next_question">Next Question</string>
+    <string name="previous_question">Previous Question</string>
     <string name="android_logo">android_logo</string>
+
 
 
 </resources>

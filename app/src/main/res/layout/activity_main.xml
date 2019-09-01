@@ -32,12 +32,14 @@
         <Button
             android:id="@+id/true_button"
             android:text="@string/true_text"
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/false_button"
             android:text="@string/false_text"
+            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -48,13 +50,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
         <ImageButton
-            android:contentDescription="@string/next_text"
-            android:id="@+id/next_button"
-           android:src="@drawable/arrow_right"
+            android:contentDescription="@string/previous_question"
+            android:id="@+id/previous_button"
+            android:src="@drawable/arrow_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:contentDescription="@string/next_question"
+            android:id="@+id/next_button"
+            android:src="@drawable/arrow_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
 
 
 

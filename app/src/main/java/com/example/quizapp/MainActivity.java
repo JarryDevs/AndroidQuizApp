@@ -17,8 +17,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button falseButton;
     private TextView questionTV;
     private ImageButton nextButton;
+    private ImageButton previousButton;
+    
 
-    int currentQuestionIndex = 0;   // because of scope we can use these MainActivity variables everywhere
+    int currentQuestionIndex = 0;   // because of 'scope' we can use these MainActivity variables everywhere
 
     private Question[] questionBank = new Question[]{
             new Question(R.string.question_open_source, false),
@@ -45,11 +47,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         falseButton = findViewById(R.id.false_button);
         questionTV = findViewById(R.id.answer_text_view);
         nextButton = findViewById(R.id.next_button);
+        previousButton = findViewById(R.id.previous_button);
 
 
         falseButton.setOnClickListener(this); //'this' is registered to View.OnClickListener above on line 10
         trueButton.setOnClickListener(this);  // and it is registered to listen click events
         nextButton.setOnClickListener(this);
+        previousButton.setOnClickListener(this);
 
 
     }
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
 
             case R.id.true_button:
-              checkAnswer(true);
+                checkAnswer(true);
                /* Toast.makeText(MainActivity.this, "True", Toast.LENGTH_LONG)
                         .show();*/
                 break;
@@ -75,28 +79,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length; //with this the count can´t go over the max amount of questions
                 updateQuestion(); // Calling updateQuestion
 
+                break;
+
+            case R.id.previous_button:
+                currentQuestionIndex = (currentQuestionIndex - 1) % questionBank.length;
+                if (currentQuestionIndex >= 0) {
+                    questionTV.setText(questionBank[currentQuestionIndex].getAnswerResId());
+
+                } else {
+                    currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length;
+                    updateQuestion();
+
+                 /*replace the above previous_button code with this and questions can go from first to last when previous button is clicked,
+                 only thing is that it doesn't work properly because question doesn't change with one click but with two clicks it goes to question that is second to last
+
+                 if(currentQuestionIndex == 0)
+                        currentQuestionIndex = questionbank.length - 1;
+                    else
+                        currentQuestionIndex = (currentQuestionIndex - 1) % questionbank.length;
+                 */
+
+                }
+
 
         }
     }
 
-    private void updateQuestion(){ //updateQuestion method
+
+    private void updateQuestion() { //updateQuestion method
         Log.d("Current", "OnClick " + currentQuestionIndex);
         questionTV.setText(questionBank[currentQuestionIndex].getAnswerResId());
     }
 
-    private void checkAnswer(boolean itsRightAnswer){
+    private void checkAnswer(boolean itsRightAnswer) {
         boolean answerTrue = questionBank[currentQuestionIndex].isAnswerTrue();
-           int toastMessage = 0;
+        int toastMessage = 0;
 
-           if (itsRightAnswer == answerTrue){
-               toastMessage = R.string.right_answer;
+        if (itsRightAnswer == answerTrue) {
+            toastMessage = R.string.right_answer;
 
-           }else{
-               toastMessage = R.string.wrong_answer;
-           }
+        } else {
+            toastMessage = R.string.wrong_answer;
+        }
 
-           Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_LONG )
-                   .show();
+        Toast.makeText(MainActivity.this, toastMessage, Toast.LENGTH_LONG)
+                .show();
     }
 }
 
